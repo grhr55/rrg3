@@ -9,6 +9,16 @@ import {  useState } from "react";
 
 
 export default function Heder() {
+  const [fynts, setfynts] =useState(true)
+
+  const filter = () => {
+     if(!fynts){
+      setfynts(true)
+     }
+      setfynts(false)
+  }
+
+
 
     const navigaat = ['media', 'films', 'actors', 'news', 'categories'];
   return (
@@ -16,20 +26,63 @@ export default function Heder() {
     <div className="w-[100%]  z-0 h-[1100px] bg-[rgba(30,37,56,1)]">
     <div className="w-[100%]  z-10 h-[1100px] bg-[url('/img/efe.png')] bg-cover bg-center">
 
+ <div className="flex min-[501px]:hidden">
+        {!fynts && (
+<div className="fixed inset-0 z-50 bg-[#333333eb] flex flex-col items-center justify-start p-6 space-y-6">
+
+ 
+  <div className="mb-[100px]  flex">
+    <Image
+      src="/img/Copilot_20251012_035756.png"
+      width={125}
+      height={125}
+      alt="User Avatar"
+      className="w-[125px]  h-[125px] rounded-full shadow-lg"
+    />
+    <button onClick={ () => setfynts(!false)}>X</button>
+  </div>
+  
+
+  
+  <nav className="flex  text-amber-50 flex-wrap mx-[200px] justify-center gap-10">
+    {["Media", "Movies", "ACTORS", "NEWS", "CATEGORIES"].map((item) => (
+      <a
+        key={item}
+        href="#"
+        className="nosifer-regular text-[17px] text-center transition duration-300 transform hover:text-red-700 hover:underline hover:scale-110"
+      >
+        {item}
+      </a>
+    ))}
+  </nav>
+
+</div>
+
+)}
+ </div>
+
     <div className="flex  min-[1058px]:justify-center  max-[1058px]:justify-around  2xl:gap-[130px] xl:gap-[70px] max-[500px]:gap-[5px] min-[400px]:mx-[30px] max-[400px]:mx-[10px]">
 
 
-   <div className="flex gap-[4px] min-[600px]:hidden">
+   <div className="flex gap-[4px] min-[500px]:hidden">
 
 
-      <a href="#" className="min-[400px]:w-[55px] max-[400px]:w-[44px] min-[400px]:h-[52px] max-[400px]:h-[42px] min-[400px]:rounded-[20px] max-[400px]:rounded-[15px] 2xl:mt-0 xl:mt-0 lg:mt-0 md:mt-[80px] sm:mt-[80px] mt-[50px]   hover:scale-110 bg-[rgba(255,255,255,1)]">
+   
 
-     <div className=" min-[400px]:ml-[15px]  max-[400px]:ml-[10px]  min-[400px]:mt-[15px] max-[400px]:mt-[10px]">
+    <button onClick={() => filter(true)} className="min-[400px]:w-[55px]   max-[400px]:w-[44px] min-[400px]:h-[52px] max-[400px]:h-[42px] min-[400px]:rounded-[20px] max-[400px]:rounded-[15px] 2xl:mt-0 xl:mt-0 lg:mt-0 md:mt-[80px] sm:mt-[80px] mt-[50px]   hover:scale-110 bg-[rgba(255,255,255,1)]">
+     <div className=" min-[400px]:ml-[15px]  max-[400px]:ml-[10px]  min-[400px]:mb-[0px] max-[400px]:mb-[3px]">
        <div className="w-[25px] h-[3px] my-[6px] bg-[#608fc5]"></div>
        <div className="w-[25px] h-[3px] my-[6px] bg-[#608fc5]"></div>
         <div className="w-[25px] h-[3px] bg-[#608fc5]"></div>
      </div>
-   </a>
+   </button>
+
+
+
+
+   
+
+
    </div>
 
 
