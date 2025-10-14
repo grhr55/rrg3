@@ -298,7 +298,13 @@ export default function Heder() {
          <div className="relative">
       {isLoading && (
   <div className="absolute inset-0 z-10 flex items-center justify-center bg-black bg-opacity-50 rounded-[10px] backdrop-blur-sm">
-    <PacmanLoader color="#e1e522" />
+                            <Image
+  src={product.img}
+  width={330}
+  height={440}
+  alt={product.name}
+  className=" 2xl:w-[330px] xl:w-[330px] xl:max-[1453px]:w-[202px]  lg:w-[202px] min-[500px]:w-[202px] max-[500px]:w-[160px]   2xl:h-[440px] xl:h-[440px] xl:max-[1453px]:h-[270px] lg:h-[270px]   min-[500px]:h-[270px]  max-[500px]:h-[212px] rounded-[15px] object-cover"
+/>
 
 </div>
 
