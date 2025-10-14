@@ -337,42 +337,42 @@ export default function Heder() {
 
 
   </div>
+
+
+
 <div className="flex flex-col items-center my-8 min-[600px]:hidden">
-  <h2 className="nosifer-regular text-[15px] text-[#00e132] mb-2">
+  <h2 className="nosifer-regular text-[15px] text-[#00e132] mb-4">
     Now at the cinema
   </h2>
 
-  <div className="relative inline-block text-left">
+  <div className="w-full max-w-xs bg-gray-800 border border-gray-600 rounded-lg shadow-md">
     <button
       onClick={toggleMenu}
-      className="flex items-center justify-center w-10 h-10 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition duration-200"
+      className="w-full flex items-center justify-center py-3 bg-[#008667] text-white rounded-t-lg  transition duration-200"
       aria-label="Toggle menu"
     >
       <span className="text-lg font-bold">☰</span>
     </button>
 
     {isOpen && (
-      <div className="absolute right-0 mt-2 w-44 bg-gray-800 border border-gray-600 rounded shadow-lg z-10">
-        <ul className="py-2 space-y-1">
-          {genres.map((genre, index) => (
-            <li key={index}>
-              <button
-                onClick={() => {
-                  setSelectedGenre(genre);
-                  setnav(null)
-                  setIsOpen(false)
-                  
-                }}
-                className={`w-full text-left px-4 py-2 text-[11px] nosifer-regular transition duration-300 rounded 
-                  ${selectedGenre === genre ? 'text-yellow-400 underline' : 'text-gray-400'} 
-                  hover:text-yellow-300 hover:underline`}
-              >
-                {genre}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <ul className="flex flex-col divide-y divide-gray-700">
+        {genres.map((genre, index) => (
+          <li key={index}>
+            <button
+              onClick={() => {
+                setSelectedGenre(genre);
+                setnav(null);
+                setIsOpen(false);
+              }}
+              className={`w-full text-left px-4 py-3 text-[12px] nosifer-regular transition duration-300 
+                ${selectedGenre === genre ? 'text-yellow-400 underline' : 'text-gray-300'} 
+                hover:text-yellow-300 hover:underline`}
+            >
+              {genre}
+            </button>
+          </li>
+        ))}
+      </ul>
     )}
   </div>
 </div>
