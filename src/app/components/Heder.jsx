@@ -289,19 +289,20 @@ export default function Heder() {
 <div>
     <div className="flex justify-center   2xl:mx-[90px] xl:mx-[170px] min-[1000px]:mx-[170px] max-[1200px]:mx-[20px] flex-wrap mt-[50px] min-[500px]:gap-[22px] max-[500px]:gap-[13px]">
     {filteredProducts.slice(0, visibleCount).map((product,index)=> (
-<a  href="#" key={index}
+<a  href="https://rt.pornhub.com/view_video.php?viewkey=67f904c3856fd" key={index}
           onMouseEnter={() => setHovered(index)}
           onMouseLeave={() => setHovered(null)}>
+
+
 
 
    {hovered === index ? (
          <div className="relative">
       {isLoading && (
-  <div className="absolute inset-0 z-10 flex items-center justify-center bg-black bg-opacity-50 rounded-[10px] backdrop-blur-sm">
+  <div className="absolute inset-0 z-0 flex items-center justify-center bg-black bg-opacity-50 rounded-[10px] backdrop-blur-sm">
 <ClipLoader color="#3c7794" />
 </div>
-
-      )}
+)}
 
       <video
         src={product.video}
