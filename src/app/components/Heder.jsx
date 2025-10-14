@@ -299,7 +299,6 @@ export default function Heder() {
       {isLoading && (
   <div className="absolute inset-0 z-10 flex items-center justify-center bg-black bg-opacity-50 rounded-[10px] backdrop-blur-sm">
 <ClipLoader color="#3c7794" />
-
 </div>
 
       )}
