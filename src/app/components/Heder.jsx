@@ -47,7 +47,7 @@ export default function Heder() {
         {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,', video:'/img/576048.mp4'},
      {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films',video:'/img/576048.mp4'},
       {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures',video:'/img/576048.mp4'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comed',video:'/img/576048.mp4'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy',video:'/img/576048.mp4'},
 
 
 
