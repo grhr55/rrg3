@@ -4,27 +4,156 @@
 import Image from "next/image";
 
 
-import {  useState } from "react";
+import {  useState , useEffect} from "react";
 
 
 
 export default function Heder() {
   const [fynts, setfynts] =useState(true)
-  const [nav ,setnav] = useState(false)
+  const [nav ,setnav] = useState(null)
+  const [selectedGenre, setSelectedGenre] = useState('All');
+  const [visibleCount, setVisibleCount] = useState(8);
+
 
    const products = [
-    {img:'/img/image 1.png',name:'Джокер',kateor:'Фантастика'},
-     {img:'/img/image 2 (2).png',name:'сталин',kateor:'трелер'},
-      {img:'/img/image 2.png',name:'хуй',kateor:'Фантастика'},
-       {img:'/img/image 2 (1).png',name:'адам',kateor:'Фантастика'},
-        {img:'/img/image 1.png',name:'Джокер',kateor:'Фантастика'},
-     {img:'/img/image 2 (2).png',name:'сталин',kateor:'трелер'},
-      {img:'/img/image 2.png',name:'хуй',kateor:'Фантастика'},
-       {img:'/img/image 2 (1).png',name:'адам',kateor:'Фантастика'},
-       {img:'/img/image 2 (1).png',name:'адам',kateor:'Фантастика'},
+    {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+      
        
-        
    ]
+
+
+
 
   const filter = () => {
      if(!fynts){
@@ -34,12 +163,26 @@ export default function Heder() {
   }
 
 
+  useEffect(() => {
+  setVisibleCount(8); 
+}, [selectedGenre]);
+
+
+
+    const filteredProducts = selectedGenre === 'All' ? products : products.filter((product) => product.kateor.toLowerCase() === selectedGenre.toLowerCase());
+
+    
+
+    
+
+
+    const genres = ['All', 'action films', 'adventures', 'comedy', 'fantasy', 'thrillers', 'drama'];
 
     const navigaat = ['media', 'films', 'actors', 'news', 'categories'];
   return (
-<div className=" relative ">
-    <div className="w-[100%]  z-0 h-[100%] bg-[rgba(30,37,56,1)]">
-    <div className="w-[100%]  z-10 h-[100%] bg-[url('/img/efe.png')] bg-cover bg-center">
+    <div className="group relative ">
+    <div className="w-[100%]  z-0 h-[100%]  bg-[rgba(30,37,56,1)]" >
+    <div className="w-[100%]  z-10 h-[100%]  bg-[url('/img/efe.png')] bg-cover bg-center">
 
  <div className="flex min-[501px]:hidden">
         {!fynts && (
@@ -137,7 +280,7 @@ export default function Heder() {
 <a href="#" className="nosifer-regular hover:text-red-700 hover:duration-300 hover:underline  hover:scale-115 text-[17px]">Movies</a>
 <a href="#" className="nosifer-regular hover:text-red-700 hover:duration-300 hover:underline hover:scale-115 text-[17px]">ACTORS</a>
 <a href="#" className="nosifer-regular hover:text-red-700 hover:duration-300 hover:underline  hover:scale-115 text-[17px]">NEWS</a>
-<a href="#" className="nosifer-regular  hover:text-red-700 hover:duration-300  hover:underline  hover:scale-115 text-[17px]">CATEGORIES</a>
+<a href="#" className="nosifer-regular hover:text-red-700 hover:duration-300  hover:underline  hover:scale-115 text-[17px]">CATEGORIES</a>
 
 
    </div>
@@ -154,7 +297,7 @@ export default function Heder() {
           className=" w-[25px] mx-auto mt-[15px] hover:scale-140 transition duration-400 ease-in-out h-[25px]"
         />
    </a>
-   <button className="w-[138px] nosifer-regular hover:scale-110 h-[53px] font-semibold text-[#ac1920] hover:text-red-600      rounded-[15px]  shadow-[0_0_10px_2px_rgba(173,216,230,0.6)]     bg-[#f1f1f1] ">
+   <button className="w-[138px] cursor-pointer nosifer-regular hover:scale-110 h-[53px] font-semibold text-[#ac1920] hover:text-red-600      rounded-[15px]  shadow-[0_0_10px_2px_rgba(173,216,230,0.6)]     bg-[#f1f1f1] ">
     Enter
    </button>
 </div>
@@ -162,7 +305,7 @@ export default function Heder() {
   
 
   <div className="flex min-[1058px]:hidden">
-      <button className=" min-[500px]:w-[138px] nosifer-regular text-red-700  max-[500px]:w-[90px] min-[500px]:h-[53px] max-[500px]:h-[52px] 2xl:mt-0 xl:mt-0 lg:mt-0 md:mt-[80px] sm:mt-[80px] mt-[50px]   hover:scale-110  font-semibold  rounded-[20px]  shadow-[0_0_10px_2px_rgba(173,216,230,0.6)]  bg-[#f1f1f1] ">
+      <button className=" cursor-pointer min-[500px]:w-[138px] nosifer-regular text-red-700  max-[500px]:w-[90px] min-[500px]:h-[53px] max-[500px]:h-[52px] 2xl:mt-0 xl:mt-0 lg:mt-0 md:mt-[80px] sm:mt-[80px] mt-[50px]   hover:scale-110  font-semibold  rounded-[20px]  shadow-[0_0_10px_2px_rgba(173,216,230,0.6)]  bg-[#f1f1f1] ">
     Enter
    </button>
   </div>
@@ -180,18 +323,18 @@ export default function Heder() {
     </div>
    
 <div className="hidden min-[600px]:flex">
-    {['All','action films','Adventures','comedy','fantasy','thrillers','drama'].map((genre, index) => (
-  <a href="#" key={index} className="mx-2 nosifer-regular min-[700px]:text-[13px] max-[700px]:text-[10px] mt-[16px] text-[#73848c] hover:text-[#fbff00] hover:underline transition duration-300">
+    {genres.map((genre, index) => (
+  <button onClick={() => {setSelectedGenre(genre);setnav(null);}}  key={index} className={`mx-2  cursor-pointer   nosifer-regular min-[700px]:text-[13px] max-[700px]:text-[10px]  text-[#73848c] hover:text-[#fbff00] hover:underline transition duration-300 ${selectedGenre === genre ? 'text-[#fbff00]':'text-[#73848c]' }   `}>
     {genre}
-  </a>
+  </button>
 ))}
 </div>
   </div>
 
 <div>
-    <div className="flex justify-center   min-[1200px]:mx-[170px] max-[1200px]:mx-[20px] flex-wrap mt-[50px] min-[500px]:gap-[22px] max-[500px]:gap-[13px]">
-    {(nav ? products :products.slice(0,8)).map((product,index)=> (
-          <div  key={index}>
+    <div className="flex justify-center   2xl:mx-[90px] xl:mx-[170px] min-[1000px]:mx-[170px] max-[1200px]:mx-[20px] flex-wrap mt-[50px] min-[500px]:gap-[22px] max-[500px]:gap-[13px]">
+    {filteredProducts.slice(0, visibleCount).map((product,index)=> (
+<div  key={index}>
 
 
             <Image
@@ -201,8 +344,8 @@ export default function Heder() {
   alt={product.name}
   className=" 2xl:w-[330px] xl:w-[330px] xl:max-[1453px]:w-[202px]  lg:w-[202px] min-[500px]:w-[202px] max-[500px]:w-[160px]   2xl:h-[440px] xl:h-[440px] xl:max-[1453px]:h-[270px] lg:h-[270px]   min-[500px]:h-[270px]  max-[500px]:h-[212px] rounded-[15px] object-cover"
 />
-<h3>{product.name}</h3>
-<h3>{product.kateor}</h3>
+<h3 className="rye-regular mt-[10px] text-[18px] text-amber-50">{product.name}</h3>
+<h3 className="rubik-distressed-regular text-[15px] text-[rgba(242,246,15,1)]">{product.kateor}</h3>
 
 
         
@@ -213,18 +356,35 @@ export default function Heder() {
 
     )}
 
-    
   </div>
    <div className="flex justify-center">
-     {!nav && products.length > 8 && (
-        <button
-          onClick={() => setnav(true)}
-          className="mt-6 px-4 py-2 bg-amber-300 rounded-full"
-        >
-          Показать ещё
-        </button>
-      )}
+
+
+
+    
+     { !visibleCount < filteredProducts.length  && (
+      <button
+  onClick={() => {setVisibleCount(visibleCount + 8 || null );}}
+  className="mt-6 nosifer-regular px-6 py-3 rounded-[10px] bg-white text-blue-700 font-semibold shadow-md hover:bg-blue-100 hover:text-blue-900 transition duration-200"
+>
+  show more
+</button>
+)}
+
+
+
    </div>
+
+
+
+   
+
+
+
+
+
+
+
   
 </div>
 

@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono ,Nosifer } from "next/font/google";
+import { Geist, Geist_Mono ,Nosifer ,Rye,Rubik_Distressed} from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -16,6 +16,17 @@ const nosifer = Nosifer({
   weight: '400',
   variable: '--font-nosifer',
 });
+const rye = Rye({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-rye',
+});
+const rubikDistressed = Rubik_Distressed({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-embed_code',
+});
+
 
 export const metadata = {
   title: "Create Next App",
@@ -26,7 +37,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${nosifer.variable}antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${nosifer.variable}  ${rye.variable} ${rubikDistressed.variable}antialiased`}
       >
         {children}
       </body>
