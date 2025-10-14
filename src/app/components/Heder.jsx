@@ -13,6 +13,8 @@ export default function Heder() {
   const [nav ,setnav] = useState(null)
   const [selectedGenre, setSelectedGenre] = useState('All');
   const [visibleCount, setVisibleCount] = useState(8);
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleMenu = () => setIsOpen(prev => !prev);
 
 
    const products = [
@@ -329,7 +331,52 @@ export default function Heder() {
   </button>
 ))}
 </div>
+
+<div>
+</div>
+
+
   </div>
+<div className="flex flex-col items-center my-8 min-[600px]:hidden">
+  <h2 className="nosifer-regular text-[15px] text-[#00e132] mb-2">
+    Now at the cinema
+  </h2>
+
+  <div className="relative inline-block text-left">
+    <button
+      onClick={toggleMenu}
+      className="flex items-center justify-center w-10 h-10 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition duration-200"
+      aria-label="Toggle menu"
+    >
+      <span className="text-lg font-bold">☰</span>
+    </button>
+
+    {isOpen && (
+      <div className="absolute right-0 mt-2 w-44 bg-gray-800 border border-gray-600 rounded shadow-lg z-10">
+        <ul className="py-2 space-y-1">
+          {genres.map((genre, index) => (
+            <li key={index}>
+              <button
+                onClick={() => {
+                  setSelectedGenre(genre);
+                  setnav(null)
+                  setIsOpen(false)
+                  
+                }}
+                className={`w-full text-left px-4 py-2 text-[11px] nosifer-regular transition duration-300 rounded 
+                  ${selectedGenre === genre ? 'text-yellow-400 underline' : 'text-gray-400'} 
+                  hover:text-yellow-300 hover:underline`}
+              >
+                {genre}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </div>
+</div>
+
 
 <div>
     <div className="flex justify-center   2xl:mx-[90px] xl:mx-[170px] min-[1000px]:mx-[170px] max-[1200px]:mx-[20px] flex-wrap mt-[50px] min-[500px]:gap-[22px] max-[500px]:gap-[13px]">
@@ -364,7 +411,7 @@ export default function Heder() {
     
      { !visibleCount < filteredProducts.length  && (
       <button
-  onClick={() => {setVisibleCount(visibleCount + 8 || null );}}
+  onClick={() => {setVisibleCount(visibleCount + 8  );}}
   className="mt-6 nosifer-regular px-6 py-3 rounded-[10px] bg-white text-blue-700 font-semibold shadow-md hover:bg-blue-100 hover:text-blue-900 transition duration-200"
 >
   show more
