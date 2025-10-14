@@ -15,141 +15,47 @@ export default function Heder() {
   const [visibleCount, setVisibleCount] = useState(8);
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(prev => !prev);
+  const [hovered, setHovered] = useState(null);
 
 
    const products = [
-    {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
-       {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films'},
-      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures'},
-       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy'},
+    {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,', video:'/img/576048.mp4'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films',video:'/img/576048.mp4'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures',video:'/img/576048.mp4'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy',video:'/img/576048.mp4'},
+        {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,', video:'/img/576048.mp4'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films',video:'/img/576048.mp4'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures',video:'/img/576048.mp4'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy',video:'/img/576048.mp4'},
+
+        {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,', video:'/img/576048.mp4'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films',video:'/img/576048.mp4'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures',video:'/img/576048.mp4'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy',video:'/img/576048.mp4'},
+        {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,', video:'/img/576048.mp4'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films',video:'/img/576048.mp4'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures',video:'/img/576048.mp4'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy',video:'/img/576048.mp4'},
+        {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,', video:'/img/576048.mp4'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films',video:'/img/576048.mp4'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures',video:'/img/576048.mp4'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy',video:'/img/576048.mp4'},
+        {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,', video:'/img/576048.mp4'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films',video:'/img/576048.mp4'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures',video:'/img/576048.mp4'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy',video:'/img/576048.mp4'},
+        {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,', video:'/img/576048.mp4'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films',video:'/img/576048.mp4'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures',video:'/img/576048.mp4'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy',video:'/img/576048.mp4'},
+
+
+
+        {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,', video:'/img/576048.mp4'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films',video:'/img/576048.mp4'},
+      {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures',video:'/img/576048.mp4'},
+       {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy',video:'/img/576048.mp4'},
+       
       
        
    ]
@@ -229,7 +135,7 @@ export default function Heder() {
 
    
 
-    <button onClick={() => filter(true)} className="min-[400px]:w-[55px]   max-[400px]:w-[44px] min-[400px]:h-[52px] max-[400px]:h-[42px] min-[400px]:rounded-[20px] max-[400px]:rounded-[15px] 2xl:mt-0 xl:mt-0 lg:mt-0 md:mt-[80px] sm:mt-[80px] mt-[50px]   hover:scale-110 bg-[rgba(255,255,255,1)]">
+    <button onClick={() => {filter(true);setIsOpen(false) }} className="min-[400px]:w-[55px]   max-[400px]:w-[44px] min-[400px]:h-[52px] max-[400px]:h-[42px] min-[400px]:rounded-[20px] max-[400px]:rounded-[15px] 2xl:mt-0 xl:mt-0 lg:mt-0 md:mt-[80px] sm:mt-[80px] mt-[50px]   hover:scale-110 bg-[rgba(255,255,255,1)]">
      <div className=" min-[400px]:ml-[15px]  max-[400px]:ml-[10px]  min-[400px]:mb-[0px] max-[400px]:mb-[3px]">
        <div className="w-[25px] h-[3px] my-[6px] bg-[#608fc5]"></div>
        <div className="w-[25px] h-[3px] my-[6px] bg-[#608fc5]"></div>
@@ -317,7 +223,7 @@ export default function Heder() {
 
   <div className="flex justify-center  ">
      <div className="hidden min-[1420px]:flex">
-       <h2 className="text-[38px] text-[#00e132] nosifer-regular">Now at the cinema</h2>
+       <h2 className="text-[38px] text-[#316614] nosifer-regular">Now at the cinema</h2>
      </div>
 
     <div className="hidden min-[1420px]:flex">
@@ -381,16 +287,29 @@ export default function Heder() {
 <div>
     <div className="flex justify-center   2xl:mx-[90px] xl:mx-[170px] min-[1000px]:mx-[170px] max-[1200px]:mx-[20px] flex-wrap mt-[50px] min-[500px]:gap-[22px] max-[500px]:gap-[13px]">
     {filteredProducts.slice(0, visibleCount).map((product,index)=> (
-<div  key={index}>
+<div  key={index}
+          onMouseEnter={() => setHovered(index)}
+          onMouseLeave={() => setHovered(null)}>
 
 
-            <Image
+   {hovered === index ? (
+            <video
+              src={product.video} 
+              autoPlay
+              muted
+              loop
+              className="2xl:w-[330px] xl:w-[330px] xl:max-[1453px]:w-[202px]  lg:w-[202px] min-[500px]:w-[202px] max-[500px]:w-[160px]   2xl:h-[440px] xl:h-[440px] xl:max-[1453px]:h-[270px] lg:h-[270px]   min-[500px]:h-[270px]  max-[500px]:h-[212px] rounded-[15px] object-cover"
+            />
+          ) : (
+                        <Image
   src={product.img}
   width={330}
   height={440}
   alt={product.name}
   className=" 2xl:w-[330px] xl:w-[330px] xl:max-[1453px]:w-[202px]  lg:w-[202px] min-[500px]:w-[202px] max-[500px]:w-[160px]   2xl:h-[440px] xl:h-[440px] xl:max-[1453px]:h-[270px] lg:h-[270px]   min-[500px]:h-[270px]  max-[500px]:h-[212px] rounded-[15px] object-cover"
 />
+          )}
+
 <h3 className="rye-regular mt-[10px] text-[18px] text-amber-50">{product.name}</h3>
 <h3 className="rubik-distressed-regular text-[15px] text-[rgba(242,246,15,1)]">{product.kateor}</h3>
 
