@@ -5,6 +5,7 @@ import Image from "next/image";
 
 
 import {  useState , useEffect} from "react";
+import { PacmanLoader } from 'react-spinners';
 
 
 
@@ -16,6 +17,7 @@ export default function Heder() {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(prev => !prev);
   const [hovered, setHovered] = useState(null);
+   const [isLoading, setIsLoading] = useState(true);
 
 
    const products = [
@@ -287,19 +289,32 @@ export default function Heder() {
 <div>
     <div className="flex justify-center   2xl:mx-[90px] xl:mx-[170px] min-[1000px]:mx-[170px] max-[1200px]:mx-[20px] flex-wrap mt-[50px] min-[500px]:gap-[22px] max-[500px]:gap-[13px]">
     {filteredProducts.slice(0, visibleCount).map((product,index)=> (
-<div  key={index}
+<a  href="#" key={index}
           onMouseEnter={() => setHovered(index)}
           onMouseLeave={() => setHovered(null)}>
 
 
    {hovered === index ? (
-            <video
-              src={product.video} 
-              autoPlay
-              muted
-              loop
-              className="2xl:w-[330px] xl:w-[330px] xl:max-[1453px]:w-[202px]  lg:w-[202px] min-[500px]:w-[202px] max-[500px]:w-[160px]   2xl:h-[440px] xl:h-[440px] xl:max-[1453px]:h-[270px] lg:h-[270px]   min-[500px]:h-[270px]  max-[500px]:h-[212px] rounded-[15px] object-cover"
-            />
+         <div className="relative">
+      {isLoading && (
+  <div className="absolute inset-0 z-10 flex items-center justify-center bg-black bg-opacity-50 rounded-[10px] backdrop-blur-sm">
+    <PacmanLoader color="#e1e522" />
+
+</div>
+
+      )}
+
+      <video
+        src={product.video}
+        autoPlay
+        muted
+        loop
+        onLoadedData={() => setIsLoading(false)}
+        className="2xl:w-[330px] xl:w-[330px] xl:max-[1453px]:w-[202px] lg:w-[202px] min-[500px]:w-[202px] max-[500px]:w-[160px] 
+                   2xl:h-[440px] xl:h-[440px] xl:max-[1453px]:h-[270px] lg:h-[270px] min-[500px]:h-[270px] max-[500px]:h-[212px] 
+                   rounded-[10px] object-cover"
+      />
+    </div>
           ) : (
                         <Image
   src={product.img}
@@ -310,13 +325,13 @@ export default function Heder() {
 />
           )}
 
-<h3 className="rye-regular mt-[10px] text-[18px] text-amber-50">{product.name}</h3>
+<h3 className="rye-regular mt-[10px] text-[18px]   text-amber-50">{product.name}</h3>
 <h3 className="rubik-distressed-regular text-[15px] text-[rgba(242,246,15,1)]">{product.kateor}</h3>
 
 
         
 
-      </div>
+      </a>
     )
   
 
