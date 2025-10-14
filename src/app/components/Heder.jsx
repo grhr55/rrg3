@@ -20,7 +20,7 @@ export default function Heder() {
 
    const products = [
     {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,', video:'/img/576048.mp4'},
-     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films',video:'/img/576048.mp4'},
+     {img:'/img/image 2 (2).png',name:'Gentlemen',kateor:'action films',video:'/img/video_2025-10-15_00-46-20.mp4'},
       {img:'/img/image 2.png',name:'Star Wars',kateor:'adventures',video:'/img/576048.mp4'},
        {img:'/img/image 2 (1).png',name:'Joker',kateor:'comedy',video:'/img/576048.mp4'},
         {img:'/img/image 1.png',name:'Joker',kateor:'fantasy,', video:'/img/576048.mp4'},
