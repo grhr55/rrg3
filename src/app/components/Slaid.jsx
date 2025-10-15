@@ -11,16 +11,24 @@ export default function Slaid({ products }) {
   const videoRefs = useRef([]);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  // Определяем, какие видео нужно загружать
+  const shouldLoadVideo = (index) => {
+    return Math.abs(index - activeIndex) <= 1;
+  };
+
   useEffect(() => {
     videoRefs.current.forEach((video, index) => {
       if (!video) return;
 
       if (index === activeIndex) {
-        video.muted = true; // autoplay only works if muted
+        video.muted = false;
         video.currentTime = 0;
-        video.play().catch(() => {});
+        video.play().catch((err) => {
+          console.warn(`Ошибка воспроизведения видео ${index}:`, err);
+        });
       } else {
         video.pause();
+        video.muted = true;
       }
     });
   }, [activeIndex]);
@@ -49,16 +57,30 @@ export default function Slaid({ products }) {
         {products.map((product, index) => (
           <SwiperSlide key={index}>
             <div className="relative">
-              <video
-                ref={(el) => (videoRefs.current[index] = el)}
-                src={product.video}
-                muted
-                playsInline
-                autoPlay
-                preload="auto"
-                poster={product.thumbnail || ''}
-                className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover rounded-xl"
-              />
+              {shouldLoadVideo(index) ? (
+                <video
+                  ref={(el) => (videoRefs.current[index] = el)}
+                  src={product.video}
+                  muted={true}
+                  playsInline
+                  poster={product.thumbnail}
+                  preload="auto"
+                  controls={false}
+                  className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover rounded-xl"
+                  onPause={(e) => {
+                    e.target.style.objectFit = 'cover';
+                  }}
+                  onPlay={(e) => {
+                    e.target.style.objectFit = 'cover';
+                  }}
+                />
+              ) : (
+                <img
+                  src={product.thumbnail}
+                  alt={product.name}
+                  className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover rounded-xl"
+                />
+              )}
             </div>
             <div className="mt-2 text-center text-white text-sm font-semibold tracking-wide">
               {product.name} — <span className="text-gray-300">{product.kateor}</span>
@@ -82,9 +104,8 @@ export default function Slaid({ products }) {
                 src={product.video}
                 muted
                 loop
-                playsInline
-                preload="metadata"
-                poster={product.thumbnail || ''}
+                poster={product.thumbnail}
+                preload="auto"
                 className="w-full h-[120px] object-cover rounded-lg shadow-md"
               />
               <div className="absolute bottom-1 left-2 bg-black bg-opacity-60 text-white text-xs px-2 py-1 rounded">
