@@ -6,6 +6,7 @@ import Image from "next/image";
 
 import {  useState , useEffect} from "react";
 import { ClipLoader } from 'react-spinners';
+import Slaid from './Slaid'
 
 
 
@@ -321,7 +322,7 @@ export default function Heder() {
   width={330}
   height={440}
   alt={product.name}
-  className=" 2xl:w-[330px] xl:w-[330px] xl:max-[1453px]:w-[202px]  lg:w-[202px] min-[500px]:w-[202px] max-[500px]:w-[160px]   2xl:h-[440px] xl:h-[440px] xl:max-[1453px]:h-[270px] lg:h-[270px]   min-[500px]:h-[270px]  max-[500px]:h-[212px] rounded-[15px] object-cover"
+  className=" 2xl:w-[330px] xl:w-[330px] xl:max-[1453px]:w-[202px]  lg:w-[202px] min-[500px]:w-[202px] max-[500px]:w-[177px]   2xl:h-[440px] xl:h-[440px] xl:max-[1453px]:h-[270px] lg:h-[270px]   min-[500px]:h-[270px]  max-[500px]:h-[212px] rounded-[15px] object-cover"
 />
           )}
 
@@ -358,6 +359,7 @@ export default function Heder() {
 
 
 
+
    
 
 
@@ -390,7 +392,11 @@ export default function Heder() {
        
     
   
+   <Slaid products={products}/>
 </div>
+
+
+
 </div>
 
   );
