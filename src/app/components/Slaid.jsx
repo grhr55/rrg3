@@ -11,7 +11,6 @@ export default function Slaid({ products }) {
   const videoRefs = useRef([]);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Определяем, какие видео нужно загружать
   const shouldLoadVideo = (index) => {
     return Math.abs(index - activeIndex) <= 1;
   };
@@ -45,6 +44,8 @@ export default function Slaid({ products }) {
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
         loop={false}
+        centeredSlides={true}
+        watchSlidesProgress={true}
         spaceBetween={20}
         slidesPerView={1}
         pagination={{
@@ -57,30 +58,16 @@ export default function Slaid({ products }) {
         {products.map((product, index) => (
           <SwiperSlide key={index}>
             <div className="relative">
-              {shouldLoadVideo(index) ? (
-                <video
-                  ref={(el) => (videoRefs.current[index] = el)}
-                  src={product.video}
-                  muted={true}
-                  playsInline
-                  poster={product.thumbnail}
-                  preload="auto"
-                  controls={false}
-                  className="w-full h-[300px] sm:h-[400px] md:h-[800px] object-cover rounded-xl"
-                  onPause={(e) => {
-                    e.target.style.objectFit = 'cover';
-                  }}
-                  onPlay={(e) => {
-                    e.target.style.objectFit = 'cover';
-                  }}
-                />
-              ) : (
-                <img
-                  src={product.thumbnail}
-                  alt={product.name}
-                  className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover rounded-xl"
-                />
-              )}
+              <video
+                ref={(el) => (videoRefs.current[index] = el)}
+                src={product.video}
+                poster={product.thumbnail}
+                preload="auto"
+                controls
+                muted
+                className="w-full h-auto max-h-screen object-contain rounded-xl"
+                style={{ display: 'block', margin: '0 auto' }}
+              />
             </div>
             <div className="mt-2 text-center text-white text-sm font-semibold tracking-wide">
               {product.name} — <span className="text-gray-300">{product.kateor}</span>
