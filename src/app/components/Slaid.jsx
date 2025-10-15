@@ -40,7 +40,7 @@ export default function Slaid({ products }) {
   };
 
   return (
-    <div className="w-full max-w-6xl mx-auto min-[1000px]:px-[0px] max-[1000px]:px-[20px] py-6 space-y-8">
+    <div className="w-full max-w-[87rem] mx-auto min-[1000px]:px-[0px] max-[1000px]:px-[20px] py-6 space-y-8">
       <Swiper
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
@@ -66,7 +66,7 @@ export default function Slaid({ products }) {
                   poster={product.thumbnail}
                   preload="auto"
                   controls={false}
-                  className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover rounded-xl"
+                  className="w-full h-[300px] sm:h-[400px] md:h-[800px] object-cover rounded-xl"
                   onPause={(e) => {
                     e.target.style.objectFit = 'cover';
                   }}
