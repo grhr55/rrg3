@@ -11,22 +11,16 @@ export default function Slaid({ products }) {
   const videoRefs = useRef([]);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Определяем, какие видео нужно загружать
-  const shouldLoadVideo = (index) => {
-    return Math.abs(index - activeIndex) <= 1;
-  };
-
   useEffect(() => {
     videoRefs.current.forEach((video, index) => {
       if (!video) return;
 
-      if (index === activeIndex && video.paused) {
-        video.muted = false;
+      if (index === activeIndex) {
+        video.muted = true; // autoplay only works if muted
         video.currentTime = 0;
         video.play().catch(() => {});
-      } else if (index !== activeIndex && !video.paused) {
+      } else {
         video.pause();
-        video.muted = true;
       }
     });
   }, [activeIndex]);
@@ -55,23 +49,16 @@ export default function Slaid({ products }) {
         {products.map((product, index) => (
           <SwiperSlide key={index}>
             <div className="relative">
-              {shouldLoadVideo(index) && (
-                <video
-                  ref={(el) => (videoRefs.current[index] = el)}
-                  src={product.video}
-                  muted={index !== activeIndex}
-                  playsInline
-                  poster={product.thumbnail}
-                  preload="metadata"
-                  className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover rounded-xl"
-                  onPause={(e) => {
-                    e.target.style.objectFit = 'cover';
-                  }}
-                  onPlay={(e) => {
-                    e.target.style.objectFit = 'cover';
-                  }}
-                />
-              )}
+              <video
+                ref={(el) => (videoRefs.current[index] = el)}
+                src={product.video}
+                muted
+                playsInline
+                autoPlay
+                preload="auto"
+                poster={product.thumbnail || ''}
+                className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover rounded-xl"
+              />
             </div>
             <div className="mt-2 text-center text-white text-sm font-semibold tracking-wide">
               {product.name} — <span className="text-gray-300">{product.kateor}</span>
@@ -95,10 +82,9 @@ export default function Slaid({ products }) {
                 src={product.video}
                 muted
                 loop
-                poster={product.thumbnail}
+                playsInline
                 preload="metadata"
-              
-                
+                poster={product.thumbnail || ''}
                 className="w-full h-[120px] object-cover rounded-lg shadow-md"
               />
               <div className="absolute bottom-1 left-2 bg-black bg-opacity-60 text-white text-xs px-2 py-1 rounded">
