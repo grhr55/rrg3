@@ -11,17 +11,22 @@ export default function Slaid({ products }) {
   const videoRefs = useRef([]);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  // Определяем, какие видео нужно загружать
+  const shouldLoadVideo = (index) => {
+    return Math.abs(index - activeIndex) <= 1;
+  };
+
   useEffect(() => {
     videoRefs.current.forEach((video, index) => {
-      if (video) {
-        if (index === activeIndex) {
-          video.muted = false;
-          video.currentTime = 0;
-          video.play();
-        } else {
-          video.pause();
-          video.muted = true;
-        }
+      if (!video) return;
+
+      if (index === activeIndex && video.paused) {
+        video.muted = false;
+        video.currentTime = 0;
+        video.play().catch(() => {});
+      } else if (index !== activeIndex && !video.paused) {
+        video.pause();
+        video.muted = true;
       }
     });
   }, [activeIndex]);
@@ -34,7 +39,6 @@ export default function Slaid({ products }) {
 
   return (
     <div className="w-full max-w-6xl mx-auto min-[1000px]:px-[0px] max-[1000px]:px-[20px] py-6 space-y-8">
-    
       <Swiper
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
@@ -51,22 +55,23 @@ export default function Slaid({ products }) {
         {products.map((product, index) => (
           <SwiperSlide key={index}>
             <div className="relative">
-            <video
-  ref={(el) => (videoRefs.current[index] = el)}
-  src={product.video}
-  muted={index !== activeIndex} 
-  playsInline 
-  preload="auto" 
-  className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover rounded-xl"
-  onPause={(e) => {
-    e.target.style.objectFit = 'cover'; 
-  }}
-  onPlay={(e) => {
-    e.target.style.objectFit = 'cover';
-  }}
-/>
-
-             
+              {shouldLoadVideo(index) && (
+                <video
+                  ref={(el) => (videoRefs.current[index] = el)}
+                  src={product.video}
+                  muted={index !== activeIndex}
+                  playsInline
+                  preload="metadata"
+                  poster={product.thumbnail || ''}
+                  className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover rounded-xl"
+                  onPause={(e) => {
+                    e.target.style.objectFit = 'cover';
+                  }}
+                  onPlay={(e) => {
+                    e.target.style.objectFit = 'cover';
+                  }}
+                />
+              )}
             </div>
             <div className="mt-2 text-center text-white text-sm font-semibold tracking-wide">
               {product.name} — <span className="text-gray-300">{product.kateor}</span>
@@ -75,7 +80,6 @@ export default function Slaid({ products }) {
         ))}
       </Swiper>
 
-    
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 px-4">
         {getVisibleThumbnails().map((product, i) => {
           const realIndex = Math.max(activeIndex - 2, 0) + i;
@@ -89,9 +93,10 @@ export default function Slaid({ products }) {
             >
               <video
                 src={product.video}
-                autoPlay
                 muted
                 loop
+                preload="metadata"
+                poster={product.thumbnail || ''}
                 className="w-full h-[120px] object-cover rounded-lg shadow-md"
               />
               <div className="absolute bottom-1 left-2 bg-black bg-opacity-60 text-white text-xs px-2 py-1 rounded">
